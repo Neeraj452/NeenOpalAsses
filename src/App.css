@@ -9,7 +9,6 @@
   flex-flow: row wrap;
   padding: 1rem;
   width: 100%;
-  margin: 1rem auto;
 
   
 }
@@ -20,7 +19,7 @@
   align-items: center;
 }
 .card {
-  flex: 0 0 24%;
+  flex: 0 0 24.02%;
   height: 400px;
   border: 1px solid #e8e8e8;
   box-sizing: border-box;
@@ -40,6 +39,18 @@
   display: flex;
   flex-direction: column;
 }
+@media only screen and (max-width: 767px) {
+  .card {
+    flex: 0 0 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .card {
+    flex: 0 0 48%;
+  }
+}
+
 .top {
   display: flex;
   justify-content: center;
