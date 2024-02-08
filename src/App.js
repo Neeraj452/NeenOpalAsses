@@ -12,14 +12,18 @@ import {
 import CustomModal from "./component/customModal";
 import CustomInput from "./component/customInput";
 import CustomButton from "./component/CustomButton";
+import Loading from "./component/Loader";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setUserData] = useState([{}]);
 const [formData, setFormData] = useState({});
+const [loading,setLoading]= useState(false);
   const handleFetch = async () => {
+    setLoading(true);
     const data = await fetch("https://dummyjson.com/users");
     const response = await data.json();
+    setLoading(false);
     if (response?.users?.length > 0) {
       setUserData(
         response?.users?.map((item) => {
@@ -55,7 +59,6 @@ const [formData, setFormData] = useState({});
     setUserData(newData);
   };
   const handleIlikeDislike = (id) => {
-    console.log(id);
     let newData = userData.map((item) => {
       if (item.id === id) {
         return { ...item, isLiked: !item.isLiked };
@@ -76,9 +79,12 @@ const [formData, setFormData] = useState({});
   }
 
   return (
+    
     <div className="container">
+      {loading && <Loading/>}
       <div className="card-caintainer">
-        {userData.map((item) => {
+
+        {!loading?userData?.length>0?userData.map((item) => {
           return (
             <div key={item?.id} className="card">
               <div className="top">
@@ -124,7 +130,7 @@ const [formData, setFormData] = useState({});
               </div>
             </div>
           );
-        })}
+        }):<div className="no-data">No Data Found</div>:null}
       </div>
       {console.log({formData})}
       <CustomModal isOpen={isModalOpen} onClose={closeModal}>
