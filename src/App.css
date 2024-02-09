@@ -205,6 +205,13 @@
   border-color: #40a9ff;
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }
+.inputerror {
+  border-color: red;
+}
+.inputerror:focus {
+  border-color: red;
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+}
 .label {
   position: relative;
   display: inline-flex;

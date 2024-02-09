@@ -68,6 +68,7 @@ const [loading,setLoading]= useState(false);
     setUserData(() => [...newData]);
   };
   const editUser = (data) => {
+    if(data?.name!=="" && data?.email!=="" && data?.phone!=="" && data?.domain!==""){
     let newData = userData.map((item) => {
       if (item.id === data.id) {
         return { ...data };
@@ -76,6 +77,7 @@ const [loading,setLoading]= useState(false);
     });
     setUserData(() => [...newData]);
     closeModal();
+  }
   }
 
   return (
